@@ -62,4 +62,42 @@ PRIMARY KEY**
 - NULL values are allowed
 - Multiple UNIQUE constraints can exist in a table
 - Used for enforcing business rules (email, phone number, etc.)
+
+- # Example
+```
+CREATE TABLE Student (
+    stud_id INT PRIMARY KEY,
+    email VARCHAR(100) UNIQUE,
+    phone VARCHAR(15) UNIQUE
+);
+
+```
 ---
+Q8: explain normalization and briefly describe the different normal forms. 
+-🔹 What is Normalization?
+- Normalization is the process of organizing data in a relational database to reduce redundancy and avoid update, insert, and delete anomalies by decomposing tables based on functional dependencies, while preserving data meaning and integrity.
+
+-🔹 Normal Forms (Brief Description)
+- First Normal Form (1NF)
+- Each column contains atomic (indivisible) values
+- No repeating groups or multi-valued attributes
+- # Second Normal Form (2NF)
+- Table is in 1NF
+- No partial dependency
+- Every non-key attribute depends on the entire composite primary key
+-  **Third Normal Form (3NF)**
+- Table is in 2NF
+- No transitive dependency
+- Non-key attributes depend only on the primary key, not on other non-key attributes
+- Boyce–Codd Normal Form (BCNF)
+- Stronger version of 3NF
+- For every functional dependency X → Y, X must be a candidate key
+- Eliminates anomalies caused by overlapping candidate keys
+- Fourth Normal Form (4NF)
+- **Table is in BCNF**
+- Eliminates multivalued dependencies
+- One fact is stored per relation
+- Fifth Normal Form (5NF / PJNF)
+- Eliminates join dependencies
+- Ensures tables can be losslessly joined without generating spurious tuples
+- Used in highly complex database designs
