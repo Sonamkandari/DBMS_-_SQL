@@ -78,7 +78,7 @@ Q8: explain normalization and briefly describe the different normal forms.
 - Normalization is the process of organizing data in a relational database to reduce redundancy and avoid update, insert, and delete anomalies by decomposing tables based on functional dependencies, while preserving data meaning and integrity.
 
 -🔹 Normal Forms (Brief Description)
-- First Normal Form (1NF)
+## First Normal Form (1NF)
 - Each column contains atomic (indivisible) values
 - No repeating groups or multi-valued attributes
 ## Second Normal Form (2NF)
