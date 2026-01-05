@@ -41,4 +41,25 @@
 - Can use aggregate functions
 - Used for conditions on aggregated results (totals, counts, averages)
 ---
+**Q6: what are SQL Joins, and what are the differences between inner, left, right, and full join?**
+- SQL joints combine rows from two tables based on the matching condition (typically keys) to answer questions that span both tables.
+- **Inner join** returns only the matches that exist in both tables( **the intersection**).
+- The **left join** returns all the rows from the left table and the matching rows from the right table. Where there is no match, right-side columns are null. 
+- The **right join** is the mirror image of all the rows from the right table, plus matches from the left table when Absent.
+- A full outer join returns all the rows from both tables, filling in NULL where a counterpart is missing.
+---
+**Q7: describe a primary key and how it differs from the unique key. ?
+PRIMARY KEY**
 
+-🔹 PRIMARY KEY
+- Uniquely identifies each row in a table
+- Implicitly enforces UNIQUE + NOT NULL
+- Only one primary key per table
+- Can be composite (multiple columns)
+- Default target for FOREIGN KEY references
+- 🔹 UNIQUE Key
+- Ensures uniqueness of values
+- NULL values are allowed
+- Multiple UNIQUE constraints can exist in a table
+- Used for enforcing business rules (email, phone number, etc.)
+---
