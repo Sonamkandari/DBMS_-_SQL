@@ -81,23 +81,23 @@ Q8: explain normalization and briefly describe the different normal forms.
 - First Normal Form (1NF)
 - Each column contains atomic (indivisible) values
 - No repeating groups or multi-valued attributes
-- # Second Normal Form (2NF)
+## Second Normal Form (2NF)
 - Table is in 1NF
 - No partial dependency
 - Every non-key attribute depends on the entire composite primary key
--  **Third Normal Form (3NF)**
+## **Third Normal Form (3NF)**
 - Table is in 2NF
 - No transitive dependency
 - Non-key attributes depend only on the primary key, not on other non-key attributes
 - Boyce–Codd Normal Form (BCNF)
-- Stronger version of 3NF
+## Stronger version of 3NF
 - For every functional dependency X → Y, X must be a candidate key
 - Eliminates anomalies caused by overlapping candidate keys
 - Fourth Normal Form (4NF)
-- **Table is in BCNF**
+## **Table is in BCNF**
 - Eliminates multivalued dependencies
 - One fact is stored per relation
-- Fifth Normal Form (5NF / PJNF)
+## Fifth Normal Form (5NF / PJNF)
 - Eliminates join dependencies
 - Ensures tables can be losslessly joined without generating spurious tuples
 - Used in highly complex database designs
