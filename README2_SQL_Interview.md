@@ -112,4 +112,90 @@ Q10: what is  pattern matching in SQL ?
 - SQL supports pattern matching mainly with LIKE (and NOT LIKE) using wildcards:
 - <img width="511" height="539" alt="image" src="https://github.com/user-attachments/assets/2957905d-2e94-48b1-935b-c80e105fdf3f" />
 
+---
+Q11: explain correlated subqueries and provide an example use case. 
+- A correlated subquery is a subquery that needs information from the outer query to work.
+  - Outer query asks a question → subquery answers it using that row’s data
+- Show employees who earn more than the average salary of their own department.
+```
+SELECT name, salary
+FROM employees e
+WHERE salary >
+      (SELECT AVG(salary)
+       FROM employees e2
+       WHERE e2.department = e.department);
+```
+- **One-Line Memory Trick 🧠**
+- Correlated subquery = subquery runs again and again for each row
+---
+Q12: What are EXISTS and NOT EXISTS and how do they differ from IN
+- **EXISTS** checks whether a subquery returns at least one row.
+It returns TRUE or FALSE and stops searching after the first match.
+**Key Points:**
+- Uses a correlated subquery
+- Does not care about selected columns
+- Safe with NULL values
+- Efficient for large datasets
+```
+SELECT * FROM employees e
+WHERE EXISTS (
+  SELECT 1
+  FROM departments d
+  WHERE d.id = e.department_id
+);
 
+Meaning:
+Return employees whose department exists.
+
+```
+---
+- **NOT EXISTS** checks whether a subquery returns no rows at all.
+- **Key Points:**
+- Opposite of EXISTS
+- Safe with NULL values
+- Preferred over NOT IN
+```
+SELECT * FROM employees e
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM projects p
+  WHERE p.emp_id = e.id
+);
+
+Meaning:
+Employees who are not assigned to any project.
+
+```
+- **IN** checks whether a value matches any value in a list or subquery result.
+- **Key Points:**
+- Simple comparison
+- Best for small result sets
+- Works fine when no NULL values exist
+```
+SELECT * FROM employees
+WHERE department_id IN (10, 20, 30);
+
+```
+---
+Q13: What is an Anti-Join?
+- An anti-join returns rows from one table that do NOT have a matching row in another table.
+- How Anti-Joins Are Implemented (SQL doesn’t have a direct keyword)
+- Anti-joins are usually written using NOT EXISTS or LEFT JOIN … IS NULL.
+- 1️⃣ Anti-Join using NOT EXISTS
+```
+SELECT e.*
+FROM employees e
+WHERE NOT EXISTS (
+  SELECT 1
+  FROM projects p
+  WHERE p.emp_id = e.emp_id
+);
+```
+- 2️⃣ Anti-Join using LEFT JOIN + IS NULL
+```
+SELECT e.*
+FROM employees e
+LEFT JOIN projects p
+  ON p.emp_id = e.emp_id
+WHERE p.emp_id IS NULL;
+```
