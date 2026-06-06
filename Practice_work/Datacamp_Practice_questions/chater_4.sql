@@ -95,4 +95,20 @@ where year =2010
 order by life_exp ASC
 LIMIT 5
 
+-- Return all cities with the same name as a country
+select name FROM cities
+intersect
+select name 
+from countries
+
+-- Return all cities that do not have the same name as a country
+select name 
+from cities
+except
+select name 
+from countries 
+ORDER BY name;
+
+
+
 
